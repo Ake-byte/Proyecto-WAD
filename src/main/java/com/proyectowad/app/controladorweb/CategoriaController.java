@@ -117,7 +117,7 @@ public class CategoriaController {
 			logger.info("Forma HTTP" + auth.getName() + " NO tienes acceso");
 		}
 		
-		Pageable pageRequest = PageRequest.of(page,10);
+		Pageable pageRequest = PageRequest.of(page,5);
 		
 		Page<Categoria> categoria = categoriaService.findAll(pageRequest);
 		

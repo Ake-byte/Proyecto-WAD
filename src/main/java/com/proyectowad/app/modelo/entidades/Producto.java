@@ -39,7 +39,7 @@ public class Producto implements Serializable{
 	
 	private Integer cantidad;
 	
-	//private String foto;
+	private String foto;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "categoria_id")
@@ -111,7 +111,7 @@ public class Producto implements Serializable{
 
 	
 
-	/*public String getFoto() {
+	public String getFoto() {
 		return foto;
 	}
 
@@ -119,7 +119,7 @@ public class Producto implements Serializable{
 
 	public void setFoto(String foto) {
 		this.foto = foto;
-	}*/
+	}
 
 
 

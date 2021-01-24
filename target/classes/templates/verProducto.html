@@ -7,10 +7,10 @@
 		<div class="card bg-light">
 			<div class="card-header" th:text="${titulo}"></div>
 			<div class="card-body">
-				<!--<img th:if="${#strings.length(categoria.foto)>0}"
+				<img th:if="${#strings.length(producto.foto)>0}"
 					class="img-thumbnail rounded float-left" style="max-width: 25%;"
-					th:src="@{'/uploads/' + ${categoria.foto}}"
-					th:alt="${categoria.foto}" />-->
+					th:src="@{'/uploadsP/' + ${producto.foto}}"
+					th:alt="${producto.foto}" />
 
 				<ul class="list-group">
 					<li class="list-group-item" th:text="${producto.categoria}"></li>

@@ -41,7 +41,7 @@ public class ProductoController {
 	@Autowired
 	private IUploadFileService uploadFileService;
 	
-	/*@GetMapping(value = "/uploads/{filename:.+}")
+	@GetMapping(value = "/uploadsP/{filename:.+}")
 	public ResponseEntity<Resource> verFoto(@PathVariable String filename) {
 
 		Resource recurso = null;
@@ -53,7 +53,7 @@ public class ProductoController {
 		return ResponseEntity.ok()
 				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + recurso.getFilename() + "\"")
 				.body(recurso);
-	}*/
+	}
 	
 	@GetMapping(value = "/verProducto/{id}")
 	public String ver(@PathVariable(value = "id") Long id, Map<String, Object> model) {
@@ -70,7 +70,7 @@ public class ProductoController {
 
 	@RequestMapping(value = "/listarProducto", method = RequestMethod.GET)
 	public String listar(@RequestParam(name="page",defaultValue="0") int page,Model model) {
-		Pageable pageRequest = PageRequest.of(page,10);
+		Pageable pageRequest = PageRequest.of(page,5);
 		
 		Page<Producto> producto = productoService.findAll(pageRequest);
 		
@@ -116,7 +116,7 @@ public class ProductoController {
 			return "formProducto";
 		}
 
-		/*if (!foto.isEmpty()) {
+		if (!foto.isEmpty()) {
 
 			if (producto.getId() != null && producto.getId() > 0 && producto.getFoto() != null
 					&& producto.getFoto().length() > 0) {
@@ -133,7 +133,7 @@ public class ProductoController {
 			producto.setFoto(uniqueFilename);
 		} else {
 			producto.setFoto("");
-		}*/
+		}
 	
 		productoService.save(producto);
 	status.setComplete();
@@ -149,9 +149,9 @@ public class ProductoController {
 			Producto producto = productoService.findOne(id);
 			productoService.delete(id);
 			
-			/*if(producto.getFoto() != null) {
+			if(producto.getFoto() != null) {
 				uploadFileService.delete(producto.getFoto());
-			}*/
+			}
 
 		}
 		return "redirect:/listarProducto";

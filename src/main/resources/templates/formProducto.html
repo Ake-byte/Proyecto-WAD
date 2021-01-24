@@ -16,67 +16,69 @@
 					</div>
 
 
-					<form th:action="@{/formProducto}" th:object="${producto}" method="post" enctype="multipart/form-data">
-							<div class="form-group row">
-								<label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
-								<div class="col-sm-6">
-									<input type="text" th:field="*{nombre}" class="form-control"
-										th:errorclass="'form-control alert-danger'" /> <small
-										class="form-text text-danger"
-										th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
-								</div>
+					<form th:action="@{/formProducto}" th:object="${producto}"
+						method="post" enctype="multipart/form-data">
+						<div class="form-group row">
+							<label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
+							<div class="col-sm-6">
+								<input type="text" th:field="*{nombre}" class="form-control"
+									th:errorclass="'form-control alert-danger'" /> <small
+									class="form-text text-danger"
+									th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
 							</div>
+						</div>
 
-							<div class="form-group row">
-								<label for="descripcion" class="col-sm-2 col-form-label">Descripci&oacute;n</label>
-								<div class="col-sm-6">
-									<input type="text" th:field="*{descripcion}" class="form-control"
-										th:errorclass="'form-control alert-danger'" /> <small
-										class="form-text text-danger"
-										th:if="${#fields.hasErrors('descripcion')}"
-										th:errors="*{descripcion}"></small>
-								</div>
+						<div class="form-group row">
+							<label for="descripcion" class="col-sm-2 col-form-label">Descripci&oacute;n</label>
+							<div class="col-sm-6">
+								<input type="text" th:field="*{descripcion}"
+									class="form-control"
+									th:errorclass="'form-control alert-danger'" /> <small
+									class="form-text text-danger"
+									th:if="${#fields.hasErrors('descripcion')}"
+									th:errors="*{descripcion}"></small>
 							</div>
-							
-							<div class="form-group row">
-								<label for="precio" class="col-sm-2 col-form-label">Precio</label>
-								<div class="col-sm-6">
-									<input type="text" th:field="*{precio}" class="form-control"
-										th:errorclass="'form-control alert-danger'" /> <small
-										class="form-text text-danger"
-										th:if="${#fields.hasErrors('precio')}"
-										th:errors="*{precio}"></small>
-								</div>
-							</div>
-							
-							<div class="form-group row">
-								<label for="cantidad" class="col-sm-2 col-form-label">Cantidad</label>
-								<div class="col-sm-6">
-									<input type="text" th:field="*{cantidad}" class="form-control"
-										th:errorclass="'form-control alert-danger'" /> <small
-										class="form-text text-danger"
-										th:if="${#fields.hasErrors('cantidad')}"
-										th:errors="*{cantidad}"></small>
-								</div>
-							</div>
-							
-							<div class="form-group row">
-								<label for="file" class="col-sm-2 col-form-label">Foto</label>
-								<div class="col-sm-6">
-									<input type="file" name="file" class="form-control" />
-								</div>
-							</div>
+						</div>
 
-							<div class="form-group row">
-								<div class="col-sm-6">
-									<input type="submit" value="Guardar" class="btn-primary" />
-								</div>
+						<div class="form-group row">
+							<label for="precio" class="col-sm-2 col-form-label">Precio $</label>
+							<div class="col-sm-6">
+								<input type="number" min=0 th:field="*{precio}" class="form-control"
+									th:errorclass="'form-control alert-danger'" /> <small
+									class="form-text text-danger"
+									th:if="${#fields.hasErrors('precio')}" th:errors="*{precio}"></small>
 							</div>
+						</div>
+
+						<div class="form-group row">
+							<label for="cantidad" class="col-sm-2 col-form-label">Cantidad</label>
+							<div class="col-sm-6">
+								 <input type="number" min=0 th:field="*{cantidad}" class="form-control"
+									th:errorclass="'form-control alert-danger'" /><small
+									class="form-text text-danger"
+									th:if="${#fields.hasErrors('cantidad')}"
+									th:errors="*{cantidad}"></small>
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label for="file" class="col-sm-2 col-form-label">Foto</label>
+							<div class="col-sm-6">
+								<input type="file" name="file" class="form-control" />
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<div class="col-sm-6">
+								<input type="submit" value="Guardar" class="btn-primary" />
+							</div>
+						</div>
 					</form>
 				</div>
 			</div>
 		</div>
-		</div>
-		<footer th:replace="layout/layout :: footer"></footer>
+	</div>
+	<footer th:replace="layout/layout :: footer"></footer>
+
 </body>
 </html>

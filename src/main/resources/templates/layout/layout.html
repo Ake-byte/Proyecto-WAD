@@ -31,7 +31,9 @@
 					<li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')"><a class="nav-link" th:href="@{/listar}">Clientes</a>
 					</li>
 				</ul>
-				
+				<div sec:authorize="!isAuthenticated()"><a
+				class="btn btn-outline-primary" th:href="@{/register}">
+						Registrarse</a></div>
 				<div sec:authorize="!isAuthenticated()"><a
 				class="btn btn-outline-primary" th:href="@{/login}">
 						Ingresar</a></div>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="layout/layout :: head"></head>
 
 <body>
@@ -12,39 +12,70 @@
 			<div class="container py-4">
 
 				<h4 class="card-title">
-					<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/formProducto}" class="btn btn-primary btn-xs">Crear
-						Producto</a>
+					<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/formProducto}"
+						class="btn btn-primary btn-xs">Crear Producto</a>
 				</h4>
-				<table class="table table-striped">
+
+				<div class="card-group" >
+					<th:block th:each="producto: ${productos}">
+						<div class="col-sm-4">
+							<img th:if="${#strings.length(producto.foto)>0}" style="width:220px;height:300px;"
+								class="card-img-top" th:src="@{'/uploadsP/' + ${producto.foto}}"
+								th:alt="${producto.foto}" />
+							<div class="card-body">
+								<h5 class="card-title" th:text="${producto.nombre}"></h5>
+								<p class="card-text" th:text="${producto.descripcion}"></p>
+								<p class="card-text">
+									<a class="btn btn-primary btn-xs"
+										th:href="@{/verProducto/} + ${producto.id}"
+										th:text="${producto.id}"></a>
+								</p>
+							</div>
+						</div>
+
+					</th:block>
+				</div>
+
+				<table sec:authorize="hasRole('ROLE_ADMIN')"
+					class="table table-striped">
 					<thead>
 						<tr>
 							<th>Id Producto</th>
-							
+							<th>Imagen</th>
 							<th>Nombre</th>
 							<th>Descripci&oacute;n</th>
 							<th>Precio</th>
 							<th>Cantidad</th>
-							<th sec:authorize="hasRole('ROLE_ADMIN')">Editar</th>
-							<th sec:authorize="hasRole('ROLE_ADMIN')">Eliminar</th>
+							<th>Editar</th>
+							<th>Eliminar</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr th:each="producto: ${productos}">
-							
-							<td><a class="btn btn-primary btn-xs" th:href="@{/verProducto/} + ${producto.id}" th:text="${producto.id}"></a></td>
+
+							<td><a class="btn btn-primary btn-xs"
+								th:href="@{/verProducto/} + ${producto.id}"
+								th:text="${producto.id}"></a></td>
+							<td><img th:if="${#strings.length(producto.foto)>0}" style="width:75px;height:120px;"
+								class="img-thumbnail rounded float-left"
+								th:src="@{'/uploadsP/' + ${producto.foto}}"
+								th:alt="${producto.foto}" /></td>
 							<td th:text="${producto.nombre}"></td>
 							<td th:text="${producto.descripcion}"></td>
 							<td th:text="${producto.precio}"></td>
 							<td th:text="${producto.cantidad}"></td>
-							<td sec:authorize="hasRole('ROLE_ADMIN')"><a class="btn btn-primary btn-xs"
+							<td sec:authorize="hasRole('ROLE_ADMIN')"><a
+								class="btn btn-primary btn-xs"
 								th:href="@{/formProducto/} + ${producto.id}" th:text="'Editar'"></a></td>
-							<td sec:authorize="hasRole('ROLE_ADMIN')"><a class="btn btn-danger btn-xs"
-								th:href="@{/eliminarProducto/} + ${producto.id}" th:text="'Eliminar'"
+							<td sec:authorize="hasRole('ROLE_ADMIN')"><a
+								class="btn btn-danger btn-xs"
+								th:href="@{/eliminarProducto/} + ${producto.id}"
+								th:text="'Eliminar'"
 								onclick="return confirm('Estás seguro que quieres eliminar?');"></a></td>
 						</tr>
 					</tbody>
 				</table>
-				<nav th:replace="paginator :: paginator"></nav>
+				<nav sec:authorize="hasRole('ROLE_ADMIN')" th:replace="paginator :: paginator"></nav>
 			</div>
 
 		</div>
