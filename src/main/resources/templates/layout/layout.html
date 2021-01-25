@@ -28,12 +28,12 @@
 					</li>
 					<li class="nav-item"><a class="nav-link"
 						th:href="@{/listarProducto}">Productos</a></li>
-					<li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')"><a class="nav-link" th:href="@{/listar}">Clientes</a>
-					</li>
+					<!-- <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')"><a class="nav-link" th:href="@{/listar}">Clientes</a>
+					</li> -->
 				</ul>
-				<div sec:authorize="!isAuthenticated()"><a
+				<!--  <div sec:authorize="!isAuthenticated()"><a
 				class="btn btn-outline-primary" th:href="@{/register}">
-						Registrarse</a></div>
+						Registrarse</a></div>-->
 				<div sec:authorize="!isAuthenticated()"><a
 				class="btn btn-outline-primary" th:href="@{/login}">
 						Ingresar</a></div>
@@ -67,6 +67,15 @@
 	<div class="container"></div>
 	<footer th:fragment="footer" class="container">
 		<p>Ake-Games</p>
+		
+		<h1>Acceso Rol: Administrador</h1>
+		<h2>Usuario: "admin"</h2>
+		<h2>Password: "12345"</h2>
+		
+		<h1>Acceso Rol: Usuario</h1>
+		<h2>Usuario: "alan"</h2>
+		<h2>Password: "12345"</h2>
+		
 		<hr />
 		<p sec:authorize="isAuthenticated()">
 			Usuario logeado: <span sec:authentication="name"></span> | Roles: <span

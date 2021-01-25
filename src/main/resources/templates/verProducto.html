@@ -13,11 +13,10 @@
 					th:alt="${producto.foto}" />
 
 				<ul class="list-group">
-					<li class="list-group-item" th:text="${producto.categoria}"></li>
-					<li class="list-group-item" th:text="${producto.nombre}"></li>
-					<li class="list-group-item" th:text="${producto.descripcion}"></li>
-					<li class="list-group-item" th:text="${producto.precio}"></li>
-					<li class="list-group-item" th:text="${producto.cantidad}"></li>
+					<li class="list-group-item" th:text="'Nombre: ' + ${producto.nombre}"></li>
+					<li class="list-group-item" th:text="'Descripci&oacute;n: ' + ${producto.descripcion}"></li>
+					<li class="list-group-item" th:text="'Precio $: ' + ${producto.precio}"></li>
+					<li class="list-group-item" th:text="'Cantidad: ' + ${producto.cantidad}"></li>
 				</ul>
 				
 
