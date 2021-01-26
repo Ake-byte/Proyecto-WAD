@@ -18,6 +18,14 @@
 
 					<form th:action="@{/formProducto}" th:object="${producto}"
 						method="post" enctype="multipart/form-data">
+						
+						<div class="form-group row">
+							<label for="nombre" class="col-sm-2 col-form-label">Id Categoría</label>
+							<div class="col-sm-6">
+								<input type="text" th:field="*{categoria}" class="form-control">
+							</div>
+						</div>
+						
 						<div class="form-group row">
 							<label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
 							<div class="col-sm-6">

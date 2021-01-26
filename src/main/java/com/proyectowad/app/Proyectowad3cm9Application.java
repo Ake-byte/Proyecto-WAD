@@ -9,7 +9,8 @@ import com.proyectowad.app.modelo.service.IUploadFileService;
 
 
 @SpringBootApplication
-public class Proyectowad3cm9Application implements CommandLineRunner{
+public class Proyectowad3cm9Application {
+//public class Proyectowad3cm9Application implements CommandLineRunner{
 
 	@Autowired
 	IUploadFileService uploadFileService;
@@ -18,11 +19,11 @@ public class Proyectowad3cm9Application implements CommandLineRunner{
 		SpringApplication.run(Proyectowad3cm9Application.class, args);
 	}
 
-	@Override
-	public void run(String... args) throws Exception {
-		uploadFileService.deleteAll();
-		uploadFileService.init();
-	}
+	//@Override
+	//public void run(String... args) throws Exception {
+		//uploadFileService.deleteAll();
+		//uploadFileService.init();
+	//}
 
 	
 }
